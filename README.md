@@ -6,3 +6,4 @@ Repositório para as aulas da disciplina de Estrutura de Dados I
 - [Funções](https://github.com/olimpiodev-tec/Estrutura-Dados-I-Aulas/tree/main/Funcoes)
 - [Structs](https://github.com/olimpiodev-tec/Estrutura-Dados-I-Aulas/tree/main/Struct)
 - [Módulos](https://github.com/olimpiodev-tec/Estrutura-Dados-I-Aulas/tree/main/Modulos)
+- [Ponteiros](https://github.com/olimpiodev-tec/Estrutura-Dados-I-Aulas/tree/main/Ponteiros)
