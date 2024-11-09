@@ -1,31 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define QTDE_NOTAS 5
-
 int main()
 {
-    int *notas;
-    notas = malloc(QTDE_NOTAS * sizeof(int)); 
+    printf("Cadastro das notas dos alunos\n");
 
-    printf("---Cadastro de notas dos alunos---\n");
+    int qtdeNotasIniciais = 0;
+    printf("Ola quantas notas deseja cadastrar? ");
+    scanf("%i", &qtdeNotasIniciais);
 
-    for (int i=0; i < QTDE_NOTAS; i++) {
-        printf("Digite uma nota: ");
-        scanf("%i", &notas[i]);
+    int *vetorNotas;
+    vetorNotas = malloc(qtdeNotasIniciais * sizeof(int));
+
+    for (int i=0; i < qtdeNotasIniciais; i++) {
+        printf("Digite a %i uma nota: ", i+1);
+        scanf("%i", &vetorNotas[i]);
     }
 
-    int novoTamanhoVetor = QTDE_NOTAS + 1;
-    notas = realloc(notas, novoTamanhoVetor * sizeof(int));
+    int qtdeNotasAdd = 0;
 
-    printf("Adicione mais uma nota: ");
-    scanf("%i", &notas[5]);
+    printf("Quantas notas deseja adicionar?");
+    scanf("%i", &qtdeNotasAdd);
 
-    for (int i=0; i < novoTamanhoVetor; i++) {
-        printf("A nota eh: %i\n", notas[i]);
+    int totalEspacos = qtdeNotasAdd + qtdeNotasIniciais;
+    vetorNotas = realloc(vetorNotas, totalEspacos * sizeof(int));
+
+    for (int z=qtdeNotasIniciais; z < totalEspacos; z++) {
+        printf("Digite a %i uma nota: ", z+1);
+        scanf("%i", &vetorNotas[z]);
     }
-
-    free(notas);
+    
+    free(vetorNotas);
 
     return 0;
 }
