@@ -1,46 +1,45 @@
 #include <stdio.h>
+#include <locale.h>
 
 int main()
 {
-    printf("\nCalculadora de consumo de agua\n");    
+    setlocale(LC_ALL, NULL);
 
+    printf("=== Olá seja bem vindo, vamos calcular o consumo de água na sua residência ===");
+    
     int qtdePessoas = 0;
-    printf("\nQuantas pessoas moram na casa? \n");
+    int totalLitros = 0;
+
+    printf("\nQuantas pessoas moram na residência? ");
     scanf("%i", &qtdePessoas);
 
-    int tempo = 0;
-    int consumo = 0;
+    printf("Qtde %i", qtdePessoas);
 
-    for (int i = 0; i < qtdePessoas; i++)
-    {
+    for (int i=0; i < qtdePessoas; i++) {
+
         int idade = 0;
-        printf("\nQual a idade da %i pessoa? \n", i+1);
+        printf("\nQual a idade da %i pessoa? ", i+1);
         scanf("%i", &idade);
 
         if (idade <= 10)
         {
-            tempo += 3;
-            consumo += 18;
+            totalLitros += 18;
         }
         else if (idade > 10 && idade <= 18)
         {
-            tempo += 5;
-            consumo += 30;
+            totalLitros += 30;
         }
-        else if (idade > 19 && idade <= 25)
+        else if (idade > 18 && idade <= 25)
         {
-            tempo += 7;
-            consumo += 42;
+            totalLitros += 42;
         }
         else if (idade > 25)
         {
-            tempo += 4;
-            consumo += 24;
-        }        
+            totalLitros += 24;
+        }
     }
 
-    float valorTotal = consumo * 0.60;
-    printf("\nO total gasto com agua R$ %.2f\n", valorTotal);
-    
+    printf("\nO total de litros consumido é %i", totalLitros);
+    printf("\nO total em R$ %.2f", (totalLitros * 0.60));
     return 0;
 }

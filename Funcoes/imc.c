@@ -1,41 +1,43 @@
 #include <stdio.h>
+#include <locale.h>
 
-void classificaImc(float imc)
-{
-if (imc < 18.5)
+void classificaIMC(float valorImc) {
+    if (valorImc < 18.5)
     {
-        printf("Classificado como baixo peso");
+        printf("Seu imc calculado é %.2f, classificado como baixo peso", valorImc);
     }
-    else if (imc >= 18.5 && imc <= 24.9)
+    else if (valorImc >= 18.5 && valorImc <= 24.9) 
     {
-        printf("Classificado como peso normal");
+        printf("Seu imc calculado é %.2f, classificado como peso normal", valorImc);
     }
-    else if (imc >= 25.0 && imc <= 29.9)
+    else if (valorImc >= 25.0 && valorImc <= 29.9)
     {
-        printf("Classificado como sobrepeso");
+        printf("Seu imc calculado é %.2f, classificado como sobrepeso", valorImc);
     }
-    else if (imc >= 30.0 && imc <= 34.9)
+    else if (valorImc >= 30 && valorImc <= 34.9)
     {
-        printf("Obesidade Grau I");
+        printf("Seu imc calculado é %.2f, classificado como obesidade grau I", valorImc);
     }
-    else if (imc >= 35.0 && imc <= 39.9)
+    else if (valorImc >= 35.0 && valorImc <= 39.9)
     {
-        printf("Obesidade Grau II");
+        printf("Seu imc calculado é %.2f, classificado como obesidade grau II", valorImc);
     }
-    else if (imc > 39.9)
+    else if (valorImc > 39.9)
     {
-        printf("Obesidade Grau III");
+        printf("Seu imc calculado é %.2f, classificado como obseidade grau III", valorImc);
     }
 }
 
 int main()
 {
-    int peso = 0;
-    float altura = 0;
+    setlocale(LC_ALL, NULL);
 
-    printf("\nOla sou a calculadora de IMC\n");
-    
-    printf("Qual seu peso? ");
+    printf("\n-- Olá seja bem vindo, vamos calcular o IMC --");
+
+    int peso = 0;
+    float altura = 0.0;
+
+    printf("\nQual seu peso? ");
     scanf("%i", &peso);
 
     printf("Qual sua altura? ");
@@ -43,7 +45,7 @@ int main()
 
     float imc = peso / (altura * altura);
 
-    classificaImc(imc);
+    classificaIMC(imc);
 
     return 0;
 }

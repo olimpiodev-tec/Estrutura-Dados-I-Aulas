@@ -1,51 +1,60 @@
 #include <stdio.h>
+#include <locale.h>
 
-int tempo = 0;
-int consumo = 0;
+int totalLitros = 0;
+int totalMinutos = 0;
 
-void calculaTempoConsumo(int i)
+void calculaTotalLitrosTempo(int idade)
 {
-    int idade = 0;
-    printf("\nQual a idade da %i pessoa? \n", i + 1);
-    scanf("%i", &idade);
-
     if (idade <= 10)
     {
-        tempo += 3;
-        consumo += 18;
+        totalLitros += 18;
+        totalMinutos += 3;
     }
     else if (idade > 10 && idade <= 18)
     {
-        tempo += 5;
-        consumo += 30;
+        totalLitros += 30;
+        totalMinutos += 5;
     }
-    else if (idade > 19 && idade <= 25)
+    else if (idade > 18 && idade <= 25)
     {
-        tempo += 7;
-        consumo += 42;
+        totalLitros += 42;
+        totalMinutos += 7;
     }
     else if (idade > 25)
     {
-        tempo += 4;
-        consumo += 24;
+        totalLitros += 24;
+        totalMinutos += 4;
     }
 }
 
+void imprimirRelatorio()
+{
+    printf("\n--Segue seu relatório de consumo de água--");
+    printf("\nO total em litros é %i", totalLitros);
+    printf("\nO tempo total gasto foi %i", totalMinutos);
+    printf("\nO valor final gasto é %.2f", (totalLitros * 0.60));
+    printf("\nObrigado por usar nosso sistema 😀");
+}
+
+
 int main()
 {
-    printf("\nCalculadora de consumo de agua\n");
+    setlocale(LC_ALL, NULL);
+
+    printf("-- Olá vamos calcular o consumo de água na sua residência --");
 
     int qtdePessoas = 0;
-    printf("\nQuantas pessoas moram na casa? \n");
+    printf("\nQuantas pessoas moram na sua residência? ");
     scanf("%i", &qtdePessoas);
 
-    for (int i = 0; i < qtdePessoas; i++)
-    {
-        calculaTempoConsumo(i);
+    for (int i=0; i < qtdePessoas; i++) {
+        int idade = 0;
+        printf("Qual a idade da %i pessoa: ", i+1);
+        scanf("%i", &idade);
+        calculaTotalLitrosTempo(idade);        
     }
-
-    float valorTotal = consumo * 0.60;
-    printf("\nO total gasto com agua R$ %.2f\n", valorTotal);
+    imprimirRelatorio();
 
     return 0;
 }
