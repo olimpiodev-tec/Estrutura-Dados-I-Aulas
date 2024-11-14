@@ -1,0 +1,1 @@
+# Lista de atividades para praticar sobre ordenação de vetores
